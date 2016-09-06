@@ -1,0 +1,33 @@
+public class ASCII
+{
+	public static void main(String[]args)
+	{
+		System.out.println("_________________88");
+		System.out.println("________________8888");
+		System.out.println("________________8888");
+		System.out.println("_______________888888");
+		System.out.println("______________88888888");
+		System.out.println("_____________8888888888");
+		System.out.println("____________8888888888888");
+		System.out.println("_________888888888888888888");
+		System.out.println("_______8888888888888888888888");
+		System.out.println("_____________8888888888");
+		System.out.println("___________88888888888888");
+		System.out.println("_________888888888888888888");
+		System.out.println("_______8888888888888888888888");
+		System.out.println("____8888888888888888888888888888");
+		System.out.println("___________888888888888888");
+		System.out.println("__________88888888888888888");
+		System.out.println("________888888888888888888888");
+		System.out.println("_____888888888888888888888888888");
+		System.out.println("__888888888888888888888888888888888");
+		System.out.println("__________888888888888888888");
+		System.out.println("_________88888888888888888888");
+		System.out.println("_______888888888888888888888888");
+		System.out.println("_____8888888888888888888888888888");
+		System.out.println("__8888888888888888888888888888888888");
+		System.out.println("88888888888888__8888888__8888888888888");
+		System.out.println("_________________88888");
+		System.out.println("_________________88888");
+	}
+}
