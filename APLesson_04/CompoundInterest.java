@@ -27,7 +27,7 @@ public class CompoundInterest
 	
 	public double calcInterest(double r, double p, double n, double t)
 	{
-		double monthlyPayment = (p * Math.pow((1 + (r / n)), (n * t)));
-		return monthlyPayment / (12.0 * t);
+		double monthlyPayment = (p * (Math.pow((1 + (r / n)), (n * t)))) / (12.0 * t);
+		return monthlyPayment;
 	}
 }
