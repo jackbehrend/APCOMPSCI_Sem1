@@ -36,7 +36,10 @@ public class receipt
 		form.formatReceipt(item2, price2);
 		form.formatReceipt(item3, price3);
 		System.out.println("");
-		form.total(subtotal, tax, total);
+		// form.total(subtotal, tax, total);
+		form.formatReceipt("Subtotal:", subtotal);
+		form.formatReceipt("Tax:", tax);
+		form.formatReceipt("Total:", total);
 		System.out.println("");
 		System.out.println("__________________________________________");
 		System.out.println("* Thank you for your support *");
@@ -44,13 +47,13 @@ public class receipt
 	
 	public void formatReceipt(String item, double price)
 	{
-		System.out.printf("* %15s ........      %.2f\n", item, price);
+		System.out.printf("* %20s ........      %20.2f\n", item, price);
 	}
 	
-	public void total(double subtotal, double tax, double total)
-	{
-		System.out.printf("* %15s ........      %.2f\n", "Subtotal:", subtotal);
-		System.out.printf("* %15s ........      %.2f\n", "Tax:", tax);
-		System.out.printf("* %15s ........      %.2f\n", "Total:", total);
-	}
+	// public void total(double subtotal, double tax, double total)
+	// {
+		// System.out.printf("* %15s ........      %.2f\n", "Subtotal:", subtotal);
+		// System.out.printf("* %15s ........      %.2f\n", "Tax:", tax);
+		// System.out.printf("* %15s ........      %.2f\n", "Total:", total);
+	// }
 }
