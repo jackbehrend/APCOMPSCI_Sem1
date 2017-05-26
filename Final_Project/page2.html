@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Graduate|Roboto+Slab" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="navButtonGroup">
+            <h1 class="title">Web Store</h1>
+            <a href="Project1.html" class="navButton">HOME</a>
+            <a href="page2.html" class="navButton">MEN</a>
+            <a href="page3.html" class="navButton">WOMEN</a>
+            <a href="page4.html" class="navButton">KIDS</a>
+            <a href="page5.html" class="navButton">CHECKOUT</a>
+        </div>
+    </nav>
+</header>
+
+<head>
+    <title>Best Store Ever</title>
+    <script>
+        function FindIfIdExists(obj, id){
+            var TheNodeList = obj.getElementsByTagName('div');
+            for(NodeNumber = 0; NodeNumber<TheNodeList.length; NodeNumber++){
+                if(TheNodeList[NodeNumber].id === id){
+                    return NodeNumber + 1;
+                }
+            }
+        }
+        function ContinueShopping() {
+            document.getElementById('products').style.visibility='visible';
+            document.getElementById('TheCart').style.visibility='hidden';
+        }
+        function AddToCart(itemToAdd) {
+            var TheCartItemImages = document.getElementById('cartItemImages');
+            var FoundNodeCount = FindIfIdExists(TheCartItemImages,"CartItem"+itemToAdd);
+            if( FoundNodeCount === 0){
+                var TheCartItemToAdd = document.getElementById(itemToAdd).cloneNode(true);
+            }
+            document.getElementById('products').style.visibility='hidden';
+            document.getElementById('TheCart').style.visibility='visible';
+        }
+    </script>
+</head>
+
+<div id ="products" style='visibility: visible'>
+    <div id="001" data-price="100.00" style = "position:absolute; left:200px; top:150px;">
+        <img src="supreme-spring-2017-12-1.jpg" height="300">
+    </div>
+
+    <div style="position: absolute; left:180px; top:428px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("001")'>
+    </div>
+
+    <div style = "position: absolute; align:right; font-size:18pt; left:425px; top:455px">
+        $100.00
+    </div>
+</div>
+
+<div id='TheCart' style='visibility: hidden'>
+    <div style = "position: absolute; align:right; font-size: 44pt; left:150px top: 5px">
+        The Cart
+    </div>
+    <div id="cartItemImages" style="position: absolute; left: 75px; top:150px"></div>
+    <div id="cartItemRemove" style="position: absolute; left: 200px; top:150px"></div>
+    <div id="cartItemPrice" style="position: absolute; left: 250px; top:150px"></div>
+    <div id="cartItemQuantity" style="position: absolute; left: 300px; top:150px"></div>
+    <div id="cartItemTotal" style="position: absolute; left: 350px; top:150px"></div>
+    <div id="cartTotal" style="position: absolute; left: 350px; top:125px">Order Total</div>
+
+</div>
+
+<div id="ThankYouForYourOrder" style='visibility: hidden; font-size: 144pt'>
+    Thank You For Your Order
+</div>
+
+<p>Welcome to the Mens section</p>
+</body>
+</html>
