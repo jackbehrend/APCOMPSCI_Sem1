@@ -22,8 +22,173 @@
 
 <head>
     <title>Best Store Ever</title>
+    <script>
+        function SubmitClicked() {
+            scrollTo(0,0);
+            document.getElementById('Input').style.visibility='hidden';
+            document.getElementById('ThankYou').style.visibility='visible';
+        }
+    </script>
 </head>
 
-<p>Welcome to checkout</p>
+<div id='ThankYou' style='visibility: hidden'>
+    <h1>Thank You For Your Order!</h1>
+</div>
+
+<div id="Input">
+<h3>1. Billing Address</h3>
+<h5>Name</h5>
+<input type="text" placeholder="First">
+<input type="text" placeholder="Last">
+<br>
+
+<h5>Address</h5>
+<input type="text" placeholder="Street Address"><br><br>
+<input type="text" placeholder="Address Line 2"><br><br>
+<input type="text" placeholder="City">
+<select>
+    <option>AL</option>
+    <option>AK</option>
+    <option>AZ</option>
+    <option>AR</option>
+    <option>CA</option>
+    <option>CO</option>
+    <option>CT</option>
+    <option>DE</option>
+    <option>FL</option>
+    <option>GA</option>
+    <option>HI</option>
+    <option>ID</option>
+    <option>IL</option>
+    <option>IN</option>
+    <option>IA</option>
+    <option>KS</option>
+    <option>KY</option>
+    <option>LA</option>
+    <option>ME</option>
+    <option>MD</option>
+    <option>MA</option>
+    <option>MI</option>
+    <option>MN</option>
+    <option>MS</option>
+    <option>MO</option>
+    <option>MT</option>
+    <option>NE</option>
+    <option>NV</option>
+    <option>NH</option>
+    <option>NJ</option>
+    <option>NM</option>
+    <option>NY</option>
+    <option>NC</option>
+    <option>ND</option>
+    <option>OH</option>
+    <option>OK</option>
+    <option>OR</option>
+    <option>PA</option>
+    <option>RI</option>
+    <option>SC</option>
+    <option>SD</option>
+    <option>TN</option>
+    <option>TX</option>
+    <option>UT</option>
+    <option>VT</option>
+    <option>VA</option>
+    <option>WA</option>
+    <option>WV</option>
+    <option>WI</option>
+    <option>WY</option>
+</select><br><br>
+<input type="text" placeholder="Postal/ZIP Code">
+<input type="text" placeholder="Country"><br><br>
+<input type="number" placeholder="Phone Number"><br><br>
+<input type="text" placeholder="Email Address">
+<br><br><br>
+
+<h3>2. Shipping Address</h3>
+<input type="radio" name="shippingAddress"> Ship to Billing Address<br>
+<input type="radio" name="shippingAddress"> Ship to Different Address<br><br>
+<input type="text" placeholder="First">
+<input type="text" placeholder="Last">
+<br>
+
+<h5>Address</h5>
+<input type="text" placeholder="Street Address"><br><br>
+<input type="text" placeholder="Address Line 2"><br><br>
+<input type="text" placeholder="City">
+<select>
+    <option>AL</option>
+    <option>AK</option>
+    <option>AZ</option>
+    <option>AR</option>
+    <option>CA</option>
+    <option>CO</option>
+    <option>CT</option>
+    <option>DE</option>
+    <option>FL</option>
+    <option>GA</option>
+    <option>HI</option>
+    <option>ID</option>
+    <option>IL</option>
+    <option>IN</option>
+    <option>IA</option>
+    <option>KS</option>
+    <option>KY</option>
+    <option>LA</option>
+    <option>ME</option>
+    <option>MD</option>
+    <option>MA</option>
+    <option>MI</option>
+    <option>MN</option>
+    <option>MS</option>
+    <option>MO</option>
+    <option>MT</option>
+    <option>NE</option>
+    <option>NV</option>
+    <option>NH</option>
+    <option>NJ</option>
+    <option>NM</option>
+    <option>NY</option>
+    <option>NC</option>
+    <option>ND</option>
+    <option>OH</option>
+    <option>OK</option>
+    <option>OR</option>
+    <option>PA</option>
+    <option>RI</option>
+    <option>SC</option>
+    <option>SD</option>
+    <option>TN</option>
+    <option>TX</option>
+    <option>UT</option>
+    <option>VT</option>
+    <option>VA</option>
+    <option>WA</option>
+    <option>WV</option>
+    <option>WI</option>
+    <option>WY</option>
+</select><br><br>
+<input type="text" placeholder="Postal/ZIP Code">
+<input type="text" placeholder="Country"><br><br>
+<input type="number" placeholder="Phone Number"><br><br>
+<input type="text" placeholder="Email Address">
+<br><br><br>
+
+<h3>3. Payment Information</h3>
+<input type="text" placeholder="Card Number">
+<select>
+    <option selected disabled>Card Type</option>
+    <option>Visa</option>
+    <option>Mastercard</option>
+    <option>American Express</option>
+    <option>Discover</option>
+</select><br><br>
+<input type="number" placeholder="Month">
+<input type="number" placeholder="Year">
+<input type="number" placeholder="CVV"><br><br><br>
+
+<h3>Total: </h3><br><br><br>
+
+<input type="submit" onclick='SubmitClicked()' value="Submit"><br><br><br>
+</div>
 </body>
 </html>
