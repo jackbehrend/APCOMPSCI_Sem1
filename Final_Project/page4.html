@@ -22,8 +22,210 @@
 
 <head>
     <title>Best Store Ever</title>
+    <script>
+        function AddPriceObject(itemToPrice) {
+            var TheCartItemPrice = document.getElementById('cartItemPrice');
+            var TheCartItem = document.getElementById("CartItem"+itemToPrice);
+            var ThePriceDiv = document.createElement('div');
+            var ThePrice = document.createTextNode("$" + TheCartItem.getAttribute("data-price"));
+            ThePriceDiv.id = 'PriceItem'+itemToPrice;
+            ThePriceDiv.appendChild(ThePrice);
+            TheCartItemPrice.appendChild(ThePriceDiv);
+        }
+
+        function AddQuantityObject (item) {
+            var TheCartItemQuantity = document.getElementById('cartItemQuantity');
+            var TheQuantityDiv = document.createElement('div');
+            var TheQuantity = document.createTextNode("1");
+            TheQuantityDiv.id = 'QuantityItem'+item;
+            TheQuantityDiv.appendChild(TheQuantity);
+            TheCartItemQuantity.appendChild(TheQuantityDiv);
+        }
+
+        function AddTotalObject (itemToRemove) {
+
+        }
+
+        function RemoveCartItem(item) {
+            var obj = document.getElementById('CartItem'+item);
+            obj.parentNode.removeChild(obj);
+            obj = document.getElementById('RemoveItem'+item);
+            obj.parentNode.removeChild(obj);
+            obj = document.getElementById('PriceItem'+item);
+            obj.parentNode.removeChild(obj);
+            obj = document.getElementById('QuantityItem'+item);
+            obj.parentNode.removeChild(obj);
+        }
+
+        function AddRemoveObject(itemToRemove) {
+            var TheCartItemRemove = document.getElementById('cartItemRemove');
+            var TheRemoveDiv = document.createElement('div');
+            var TheRemoveImage = document.createElement('img');
+            TheRemoveDiv.id = 'RemoveItem'+itemToRemove;
+            TheRemoveImage.src = "x-button.jpg";
+            TheRemoveImage.height = 25;
+            TheRemoveImage.onclick = function() {RemoveCartItem(itemToRemove);};
+            TheRemoveDiv.appendChild(TheRemoveImage);
+            TheCartItemRemove.appendChild(TheRemoveDiv);
+        }
+
+        function ShowCartItems() {
+            var TheCartItems = document.getElementById('cartItemImages');
+            var TheCartItemRemove = document.getElementById('cartItemRemove');
+            var TheCartItemPrice = document.getElementById('cartItemPrice');
+            var TheCartItemQuantity = document.getElementById('cartItemQuantity');
+            var TheRemoveNodeList = TheCartItemRemove.getElementsByTagName('div');
+            var TheImageNodeList = TheCartItems.getElementsByTagName('div');
+            var ThePriceNodeList = TheCartItemPrice.getElementsByTagName('div');
+            var TheQuantityNodeList = TheCartItemQuantity.getElementsByTagName('div');
+            for (i=0; i<TheImageNodeList.length; i++) {
+                TheImageNodeList[i].style.position = "absolute";
+                TheImageNodeList[i].style.top = ((120*i) + 100)+"px";
+                TheImageNodeList[i].style.left = (0)+"px";
+                TheRemoveNodeList[i].style.position = "absolute";
+                TheRemoveNodeList[i].style.top = ((120*i) + 130)+"px";
+                TheRemoveNodeList[i].style.left = (0)+"px";
+                ThePriceNodeList[i].style.position = "absolute";
+                ThePriceNodeList[i].style.top = ((120*i) + 130)+"px";
+                ThePriceNodeList[i].style.left = (0)+"px";
+                TheQuantityNodeList[i].style.position = "absolute";
+                TheQuantityNodeList[i].style.top = ((120*i) + 130)+"px";
+                TheQuantityNodeList[i].style.left = (0)+"px";
+            }
+        }
+
+        function FindIfIdExists(obj, id){
+            var TheNodeList = obj.getElementsByTagName('div');
+            for(NodeNumber = 0; NodeNumber<TheNodeList.length; NodeNumber++){
+                if(TheNodeList[NodeNumber].id === id){
+                    return NodeNumber + 1;
+                }
+            }
+            return 0;
+        }
+        function ContinueShopping() {
+            document.getElementById('products').style.visibility='visible';
+            document.getElementById('TheCart').style.visibility='hidden';
+        }
+        function AddToCart(itemToAdd) {
+            var TheCartItemImages = document.getElementById('cartItemImages');
+            var FoundNodeCount = FindIfIdExists(TheCartItemImages,"CartItem"+itemToAdd);
+            if (FoundNodeCount === 0){
+                var TheCartItemToAdd = document.getElementById(itemToAdd).cloneNode(true);
+                TheCartItemToAdd.id = "CartItem"+itemToAdd;
+                TheCartItemToAdd.childNodes[1].height=100;
+                TheCartItemImages.appendChild(TheCartItemToAdd);
+                AddRemoveObject(itemToAdd);
+                AddPriceObject(itemToAdd);
+                AddQuantityObject(itemToAdd);
+                AddTotalObject(itemToAdd);
+            }
+            ShowCartItems();
+            document.getElementById('products').style.visibility='hidden';
+            document.getElementById('TheCart').style.visibility='visible';
+        }
+    </script>
 </head>
 
-<p>Welcome to the Kids section</p>
+<div id ="products" style='visibility: visible'>
+    <div id="017" data-price="275.00" style = "position:absolute; left:50px; top:150px;">
+        <img src="002ZPD303607_RED_B_1024x1024.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:30px; top:428px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("017")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:220px; top:455px">
+        $275.00
+    </div>
+
+    <div id="018" data-price="85.00" style = "position:absolute; left:450px; top:150px;">
+        <img src="768869-050_grey_nike_kd_8_prince_george_sneaker_lp1.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:430px; top:428px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("018")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:675px; top:455px">
+        $85.00
+    </div>
+
+    <div id="019" data-price="60.00" style = "position:absolute; left:850px; top:150px;">
+        <img src="thumb.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:830px; top:428px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("019")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:1075px; top:455px">
+        $60.00
+    </div>
+
+    <div id="020" data-price="150.00" style = "position:absolute; left:1250px; top:150px;">
+        <img src="b1f7e8394e3d3cb7e344b5910602b7fb.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:1230px; top:428px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("020")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:1420px; top:455px">
+        $150.00
+    </div>
+
+    <div id="021" data-price="135.00" style = "position:absolute; left:50px; top:550px;">
+        <img src="11070309_3.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:30px; top:828px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("021")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:240px; top:855px">
+        $135.00
+    </div>
+
+    <div id="022" data-price="50.00" style = "position:absolute; left:450px; top:550px;">
+        <img src="thrasher_kleding_kinderkleding_toddler_skateboard_magazine_white_pink.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:430px; top:828px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("022")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:675px; top:855px">
+        $50.00
+    </div>
+
+    <div id="023" data-price="400.00" style = "position:absolute; left:850px; top:550px;">
+        <img src="271312-f2ad0-9769-1.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:830px; top:828px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("023")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:1075px; top:855px">
+        $400.00
+    </div>
+
+    <div id="024" data-price="350.00" style = "position:absolute; left:1250px; top:550px;">
+        <img src="Adidas%20Yeezy%20Boost%20350%20Low%20Kids%20Kanye%20West%20Grey%20White-500x500.jpg" height="300">
+    </div>
+    <div style="position: absolute; left:1230px; top:828px">
+        <img src="CTA-Add-to-Cart-Button-PNG-Graphic-Cave.png" height="90" onclick='AddToCart("024")'>
+    </div>
+    <div style = "position: absolute; align:right; font-size:18pt; left:1475px; top:855px">
+        $350.00
+    </div>
+</div>
+
+<div id='TheCart' style='visibility: hidden'>
+    <div style = "position: absolute; align:right; font-size: 30pt; left:100px top: 55px">
+    </div>
+    <div style="position: absolute; left; 475px; top: 150px">
+        <img src="SHOPING-BUTTON.png" height="45" onclick='ContinueShopping()'>
+    </div>
+    <div id="cartItemImages" style="position: absolute; left: 75px; top:150px"></div>
+    <div id="cartItemRemove" style="position: absolute; left: 200px; top:150px"></div>
+    <div id="cartItemPrice" style="position: absolute; left: 250px; top:150px"></div>
+    <div id="cartItemQuantity" style="position: absolute; left: 400px; top:150px"></div>
+    <div id="cartItemTotal" style="position: absolute; left: 350px; top:150px"></div>
+    <div id="cartTotal" style="position: absolute; left: 350px; top:125px">Order Total</div>
+
+</div>
+
+<div id="ThankYouForYourOrder" style='visibility: hidden; font-size: 144pt'>
+    Thank You For Your Order
+</div>
 </body>
 </html>
